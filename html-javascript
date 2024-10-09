@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Rows to Table</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Add Rows to Table</h1>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Column 1</th>
+                <th>Column 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Row 1, Col 1</td>
+                <td>Row 1, Col 2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="addRowBtn">Add Row</button>
+
+    <script>
+        // Get references to the button and table body
+        const addRowBtn = document.getElementById('addRowBtn');
+        const tableBody = document.querySelector('#myTable tbody');
+
+        // Initialize row count
+        let rowCount = tableBody.rows.length;
+
+        // Function to add a new row
+        addRowBtn.addEventListener('click', () => {
+            // Increment row count
+            rowCount++;
+
+            // Create a new row element
+            const newRow = document.createElement('tr');
+
+            // Add cells with content to the new row
+            newRow.innerHTML = `
+                <td>${rowCount}</td>
+                <td>Row ${rowCount}, Col 1</td>
+                <td>Row ${rowCount}, Col 2</td>
+            `;
+
+            // Append the new row to the table body
+            tableBody.appendChild(newRow);
+        });
+    </script>
+
+</body>
+</html>
